@@ -12,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 // Session
 app.use(
     session({
@@ -25,5 +26,12 @@ app.use(
 // Routes
 app.use('/auth', authRoutes);
 app.use('/recette', recetteRoutes);
+
+ // Routes pour le rendu des pages
+ app.get("/", (req, res) => {
+    res.render("front.ejs"); });
+
+
+
 
 export default app;
