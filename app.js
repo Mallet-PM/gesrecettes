@@ -8,6 +8,14 @@ dotenv.config();
 
 const app = express();
 
+// Middleware global pour les requêtes CORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Remplacez '*' par un domaine spécifique pour plus de sécurité
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
